@@ -4,4 +4,4 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install 
 ADD . /usr/src/app/ 
 EXPOSE 3000 
-CMD rails s -b 0.0.0.0
+CMD rails db:migrate && rails s -b 0.0.0.0
