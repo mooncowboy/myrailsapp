@@ -26,6 +26,9 @@ jobs:
           login-server: ${{ secrets.REGISTRY_SERVER }}
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_SECRET }}
+
+      - name: Lowercase the repo name and username
+        run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
       
       - run: |
           docker push ${{ secrets.REGISTRY_SERVER }}/${{ env.REPO }}:${{ github.sha }}
