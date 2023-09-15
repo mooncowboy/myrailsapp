@@ -1,23 +1,31 @@
-<%= form_tag spotify_add_multiple_path, method: :post do %>
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Popularity</th>
-        <th>Spotify ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @results.each do |result| %>
-        <tr>
-          <td><%= check_box_tag 'spotify_ids[]', result.id %></td>
-          <td><%= result.name %></td>
-          <td><%= result.popularity %></td>
-          <td><%= result.id %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= submit_tag "Add Selected Items", class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium mt-5" %>
-<% end %>
+<div class="flex flex-col">
+  <div class="mb-5 justify-between items-center">
+    <h1 class="font-bold text-4xl">Spotify Results</h1>
+  </div>
+
+  <div class="min-w-full">
+    <%= form_tag spotify_add_multiple_path, method: :post do %>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Popularity</th>
+            <th>Spotify ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.each do |result| %>
+            <tr>
+              <td><%= check_box_tag 'spotify_ids[]', result.id %></td>
+              <td><%= result.name %></td>
+              <td><%= result.popularity %></td>
+              <td><%= result.id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= submit_tag "Add Selected Items", class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium mt-5" %>
+    <% end %>
+  </div>
+</div>
