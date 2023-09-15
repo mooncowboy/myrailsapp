@@ -5,16 +5,23 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Artists</h1>
-    <%= link_to 'New artist', new_artist_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div class="min-w-full">
+  <div>
+    <%= form_tag spotify_search_path, method: :get do %>
+      <div class="flex items-center">
+        <%= text_field_tag :query, params[:query], class: "rounded-lg py-3 px-5 bg-gray-100 text-gray-600 block font-medium w-full" %>
+        <%= submit_tag "Search", class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium ml-5" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="min-w-full" style="display:none">
     <%= render "shared/artist_spotify_search" %>
   </div>
+
 
   <div id="artists" class="min-w-full">
     <%= render @artists %>
   </div>
-
-  A test app
 </div>

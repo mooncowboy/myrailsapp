@@ -57,6 +57,16 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def search
+    puts "Searching for artist..."
+    # Search for artist on Spotify
+    query = params[:query]
+    @results = RSpotify::Artist.search(query)
+
+    # Render the search results view
+    render :search
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artist
