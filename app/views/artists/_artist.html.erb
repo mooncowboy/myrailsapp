@@ -7,9 +7,6 @@
     
     <div class="flex items-center">
         <span class="mr-2"><%= artist.popularity %></span>
-
-        
-
         <% if action_name != "show" %>
             <span><%= link_to 'Edit', edit_artist_path(artist), class: "text-blue-500 hover:underline" %></span>
         <% end %>

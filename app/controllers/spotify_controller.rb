@@ -12,7 +12,7 @@ class SpotifyController < ApplicationController
       spotify_ids.each do |spotify_id|
         spotify_artist = RSpotify::Artist.find(spotify_id)
         artist = Artist.new
-        artist.name = spotify_artist.name
+        artist.name = spotify_artist.name if spotify_artist
         artist.spotify_id = spotify_artist.id
         artist.popularity = spotify_artist.popularity
         artist.save!

@@ -1,6 +1,11 @@
 class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[ show edit update destroy ]
 
+  pattern = "^[0-9A-Z]([-.\w]*[0-9A-Z])*$"
+  pattern2 = "\\b(\\w+((\\r?\\n)|,?\\s))*\\w+[.?:;!]"
+  pattern3 = "^([a-zA-Z0-9_.]+), Version=([0-9.]+), Culture=(neutral|[a-z]{2}-[A-Z]{2}), PublicKeyToken=([a-f0-9]{16})(, ProcessorArchitecture=(MSIL|x86|IA64|AMD64))?$"
+
+
   # GET /artists or /artists.json
   def index
     @artists = Artist.all
