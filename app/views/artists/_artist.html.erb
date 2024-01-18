@@ -6,13 +6,18 @@
     </div>
     
     <div class="flex items-center">
-        <span class="mr-2"><%= artist.popularity %></span>
+        <% stars = (artist.popularity / 20.0).round %>
+        <span class="mr-2">Pop 
+            <% stars.times do %>
+                &#9733;
+            <% end %>
+            <% (5 - stars).times do %>
+                &#9734;
+            <% end %>
+        </span>
         <% if action_name != "show" %>
             <span><%= link_to 'Edit', edit_artist_path(artist), class: "text-blue-500 hover:underline" %></span>
         <% end %>
     </div>
 </div>
-
-
-
 </div>
