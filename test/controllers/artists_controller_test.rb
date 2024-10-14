@@ -46,3 +46,11 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to artists_url
   end
 end
+
+test "should get top artists" do
+  get top_artists_url
+  assert_response :success
+  assert_not_nil assigns(:artists)
+  assert_equal 10, assigns(:artists).count
+  assert assigns(:artists).first.popularity >= assigns(:artists).last.popularity
+end

@@ -60,6 +60,8 @@ group :development, :test do
 
   # dotenv
   gem "dotenv-rails"
+
+  gem 'rspec-rails', '~> 5.0'
 end
 
 group :development do
