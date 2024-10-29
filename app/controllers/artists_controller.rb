@@ -72,6 +72,11 @@ class ArtistsController < ApplicationController
     render :search
   end
 
+  # Returns the top 10 artists with higher popularity score
+  def top
+    @artists = Artist.order(popularity: :desc).limit(10)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artist
