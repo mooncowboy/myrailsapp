@@ -143,7 +143,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     netrc (0.11.0)
-    nio4r (2.5.9)
+    nio4r (2.7.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
@@ -161,7 +161,7 @@ GEM
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
     public_suffix (5.0.3)
-    puma (5.6.6)
+    puma (5.6.9)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
@@ -270,7 +270,7 @@ DEPENDENCIES
   dotenv-rails
   importmap-rails
   jbuilder
-  puma (~> 5.0)
+  puma (~> 5.6)
   rails (~> 7.0.6)
   rspotify
   selenium-webdriver
