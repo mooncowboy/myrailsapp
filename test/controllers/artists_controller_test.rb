@@ -46,3 +46,5 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to artists_url
   end
 end
+
+

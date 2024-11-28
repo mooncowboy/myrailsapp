@@ -72,6 +72,17 @@ class ArtistsController < ApplicationController
     render :search
   end
 
+  # Return the most popular artists, based on popularity score
+  # Retrieves the top 10 most popular artists.
+  # 
+  # This method orders artists by their popularity in descending order
+  # and limits the result to the top 10 artists.
+  # 
+  # @return [Array<Artist>] An array of the top 10 most popular artists.
+  def popular
+    @artists = Artist.order(popularity: :desc).limit(10)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artist

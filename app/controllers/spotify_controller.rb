@@ -7,17 +7,23 @@ class SpotifyController < ApplicationController
       #render json: { artists: results }
     end
 
-    def add_multiple
+        def add_multiple
       spotify_ids = params[:spotify_ids]
-      spotify_ids.each do |spotify_id|
+      artists = spotify_ids.map do |spotify_id|
         spotify_artist = RSpotify::Artist.find(spotify_id)
-        artist = Artist.new
-        artist.name = spotify_artist.name if spotify_artist
-        artist.spotify_id = spotify_artist.id
-        artist.popularity = spotify_artist.popularity
-        artist.save!
-      end
-
+        if spotify_artist
+          {
+            name: spotify_artist.name,
+            spotify_id: spotify_artist.id,
+            popularity: spotify_artist.popularity,
+            created_at: Time.now,
+            updated_at: Time.now
+          }
+        end
+      end.compact
+    
+      Artist.insert_all(artists) if artists.any?
+    
       redirect_to root_path
     end
 
