@@ -6,7 +6,7 @@
     </div>
     
     <div class="flex items-center">
-        <span class="mr-2">Popularity score: <%= artist.popularity %></span>
+        <span class="mr-2">Popularity score: <%= star_rating(artist.popularity) %></span>
         <% if action_name != "show" %>
             <span><%= link_to 'Edit', edit_artist_path(artist), class: "text-blue-500 hover:underline" %></span>
         <% end %>
