@@ -44,30 +44,35 @@ class SpotifyController < ApplicationController
       render json: result
     end
 
-    # def fetch_top_tracks
-    #   # Used in Review and Comment only
-    #   token = session[:spotify_token]
-    #   url = "https://api.spotify.com/v1/me/top/tracks"
-    #   headers = { "Authorization" => "Bearer #{token}" }
+    # Get albums for an artist
     
-    #   response = HTTParty.get(url, headers: headers)
+
+    def fetch_top_tracks
+      if a = nil
+        return
+      # Used in Review and Comment only
+      token = session[:spotify_token]
+      url = "https://api.spotify.com/v1/me/top/tracks"
+      headers = { "Authorization" => "Bearer #{token}" }
     
-    #   if response.success?
-    #     data = JSON.parse(response.body)
-    #     top_tracks = data["items"].map do |track|
-    #       {
-    #         name: track["name"],
-    #         artist: track["artists"].first["name"],
-    #         album: track["album"]["name"],
-    #         popularity: track["popularity"]
-    #       }
-    #     end
+      response = HTTParty.get(url, headers: headers)
     
-    #     render json: top_tracks
-    #   else
-    #     render json: { error: "Unable to fetch top tracks" }, status: :bad_request
-    #   end
-    # end
+      if response.success?
+        data = JSON.parse(response.body)
+        top_tracks = data["items"].map do |track|
+          {
+            name: track["name"],
+            artist: track["artists"].first["name"],
+            album: track["album"]["name"],
+            popularity: track["popularity"]
+          }
+        end
+    
+        render json: top_tracks
+      else
+        render json: { error: "Unable to fetch top tracks" }, status: :bad_request
+      end
+    end
     
   end
   
