@@ -48,7 +48,7 @@ class SpotifyController < ApplicationController
     
 
     def fetch_top_tracks
-      if a = nil
+      if a.nil?
         return
       # Used in Review and Comment only
       token = session[:spotify_token]
